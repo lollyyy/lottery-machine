@@ -9,14 +9,14 @@
 
 <?php
 
-//Creating an array where we store numbers 1-30
+//Creating an array to store numbers 1-30
 $num_pool[] = "";
 
 for($pool_val = 1; $pool_val <= 30; $pool_val++){
   $num_pool[] = $pool_val;
 }
 
-//Discarding the zeroth array item so we only get numbers 1-30
+//Discarding the zeroth array item to only get numbers 1-30
 unset($num_pool[0]);
 
 ?>
@@ -41,13 +41,45 @@ unset($num_pool[0]);
 </fieldset>
 <?php
 
-//Storing the values we get from the form
+//Storing the values get from the form
 $usr_choice = $_POST['usr_choice'];
 
 //Validating the input so the user can't pick less or more than six values
 if(sizeof($usr_choice) != 6){
   echo "Hey man, pick six numbers!";
 }
+
+//Pick six random values from the number pool and store them to new variable
+$raffle = array_rand($num_pool, 6);
+
+$diff = array_diff($usr_choice, $raffle);
+
+$diff_length = sizeof($diff);
+
+switch($diff_length) {
+  case 6:
+    echo "You got 0 right :(";
+    break;
+  case 5:
+    echo "You got 1 right, that's pretty good!";
+    break;
+  case 4:
+    echo "You got 2 right, NICE!";
+    break;
+  case 3:
+    echo "You got 3 right, getting close!";
+    break;
+  case 2:
+    echo "You got 4 right, daymn!";
+    break;
+  case 1:
+    echo "You got 5 right, DON'T LOSE HOPE!";
+    break;
+  case 0:
+    echo "JACKPOT! YOU ARE THE WINNER!!!";
+    break;
+}
+
 
  ?>
 
