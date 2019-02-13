@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -10,7 +9,7 @@
 
 <?php
 
-//Creating an array to store numbers 1-30
+//Create an array to store numbers 1-30
 $num_pool = range(1,30);
 
 ?>
@@ -18,7 +17,7 @@ $num_pool = range(1,30);
   <legend>Pick six lucky numbers!</legend>
   <form action="lopputehtava-1.php" method="post">
     <?php
-    //Looping through each value in the number pool, creating form inputs for each
+    //Loop through each value in the number pool, creating form inputs for each
     foreach($num_pool as $choice) {
     echo "<input type='checkbox' name='usr_choice[]' value='$choice' class='selection'><label> $choice </label>";
     //Linebreak after every tenth item to keep things tidy
@@ -34,10 +33,10 @@ $num_pool = range(1,30);
 </fieldset>
 <?php
 
-//Storing the values get from the form
+//Store the values get from the form
 $usr_choice = $_POST['usr_choice'];
 
-//Validating the input so the user can't pick less or more than six values
+//Validate the input so the user can't pick less or more than six values
 if(sizeof($usr_choice) != 6){
   echo "Hey man, pick six numbers!";
 }
