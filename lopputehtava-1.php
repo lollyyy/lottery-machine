@@ -36,13 +36,19 @@ $num_pool = range(1,30);
 //Store the values get from the form
 $usr_choice = $_POST['usr_choice'];
 
-//Validate the input so the user can't pick less or more than six values
-if(sizeof($usr_choice) != 6){
-  echo "Hey man, pick six numbers!";
-}
-
 //Pick six random values from the number pool and store them to new variable
-$raffle = array_rand($num_pool, 6);
+$raffle = array_rand(array_flip($num_pool), 6);
+
+
+//Display choices and raffle numbers
+echo "Your Numbers: ";
+foreach($usr_choice as $usr_display) {
+  echo "$usr_display ";
+}
+echo "<br> Correct Numbers: ";
+foreach($raffle as $raffle_display) {
+  echo "$raffle_display ";
+}
 
 //Count the difference between the two arrays and store the lenght to new variable
 //Stfu operator to silence the warning that comes up on the first page load
@@ -51,7 +57,9 @@ $raffle = array_rand($num_pool, 6);
 //Count the difference of new array
 $diff_length = sizeof($diff);
 
-if ($_POST['usr_choice'] != "") {
+if ($_POST['usr_choice'] != "" && sizeof($usr_choice) == 6) {
+
+echo "<br>";
 //Switch through the diff_length array and give user different messages
 switch($diff_length) {
   case 6:
