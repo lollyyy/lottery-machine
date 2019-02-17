@@ -3,16 +3,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="style.css">
+  <link href="https://fonts.googleapis.com/css?family=Lato:700|Roboto" rel="stylesheet">
   <title>Da lottery machine</title>
 </head>
 <body>
-
 <?php
-
 //Create an array to store numbers 1-30
 $num_pool = range(1,30);
-
 ?>
+
 <fieldset>
   <legend>Pick six lucky numbers!</legend>
   <form action="lopputehtava-1.php" method="post">
@@ -39,6 +38,7 @@ $usr_choice = $_POST['usr_choice'];
 //Pick six random values from the number pool and store them to new variable
 $raffle = array_rand(array_flip($num_pool), 6);
 
+if ($_POST['usr_choice'] != "" && sizeof($usr_choice) == 6) {
 
 //Display choices and raffle numbers
 echo "Your Numbers: ";
@@ -49,17 +49,14 @@ echo "<br> Correct Numbers: ";
 foreach($raffle as $raffle_display) {
   echo "$raffle_display ";
 }
+echo "<br>";
 
-//Count the difference between the two arrays and store the lenght to new variable
-//Stfu operator to silence the warning that comes up on the first page load
-@$diff = array_diff($usr_choice, $raffle);
+//Count the difference between the two arrays and store the length to new variable
+$diff = array_diff($usr_choice, $raffle);
 
 //Count the difference of new array
 $diff_length = sizeof($diff);
 
-if ($_POST['usr_choice'] != "" && sizeof($usr_choice) == 6) {
-
-echo "<br>";
 //Switch through the diff_length array and give user different messages
 switch($diff_length) {
   case 6:

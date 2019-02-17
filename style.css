@@ -1,8 +1,59 @@
 /* Stylesheet for lopputehtava-1 */
 body {
   text-align: center;
+  height: 98vh;
+  width: 98vw;
+  background-color: #FFA500;
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  font-size: 5vw;
+  text-align: center;
 }
 
 legend {
+  margin: 0 auto;
+  font-family: 'Lato', sans-serif;
+  font-size: 1.2em;
+}
+
+label {
+  font-size: 0.5em;
+  display: inline;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+
+input[type="checkbox"] + label {
+  background-color: transparent;
+  border: 2px solid #FF8B39;
+  padding: 0.35em;
+  border-radius: 0.25em;
+  display: inline-block;
+  width: 4%;
+}
+
+input:checked + label {
+  color: #FFA500;
+  background-color: #FFC864;
+}
+
+input[type="submit"] {
+  background-color: transparent;
+  border: 2px solid #FF8B39;
+  padding: 0.35em;
+  border-radius: 0.25em;
+  display: inline-block;
+  width: 10%;
+  font-size: 0.4em;
+  color: white;
+  text-align: center;
+  position: relative;
+  top: -2em;
+}
+
+.form-container {
+  width: 75%;
   margin: 0 auto;
 }
