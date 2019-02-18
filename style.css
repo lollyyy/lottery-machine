@@ -2,12 +2,13 @@
 body {
   text-align: center;
   height: auto;
-  width: 99%;
+  width: 100%;
   background-color: #FFA500;
   color: white;
   font-family: 'Roboto', sans-serif;
   font-size: 5vw;
   text-align: center;
+  overflow: hidden;
 }
 
 h1 {
@@ -82,13 +83,21 @@ em {
   font-style: normal;
 }
 
+a img {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  right: 0.2em;
+  bottom: 0.2em;
+}
+
 .form-container {
   width: 75%;
   margin: 0 auto;
 }
 
 .result {
-  font-size: 0.4em;
+  font-size: 0.5em;
   margin: 0;
   position: relative;
   top: -2em;
@@ -105,4 +114,8 @@ em {
   bottom: 1em;
   right: 1em;
   z-index: -1;
+}
+
+#alert {
+  font-size: 0.7em;
 }

@@ -4,7 +4,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="style.css">
   <link href="https://fonts.googleapis.com/css?family=Lato:700|Roboto|Righteous" rel="stylesheet">
-  <title>Da lottery machine</title>
+  <title>Divi Lottery 2019</title>
 </head>
 <body>
 <?php
@@ -32,6 +32,8 @@ $num_pool = range(1,30);
 </div>
 <div id="parrotBox"></div>
 <div id="expBox"></div>
+<a href="https://github.com/lollyyy/lottery-machine" target="_blank">
+  <img src="images/github.png"></a>
 <?php
 
 //Store the values get from the form
