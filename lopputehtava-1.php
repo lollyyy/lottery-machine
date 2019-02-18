@@ -72,7 +72,7 @@ switch($diff_length) {
     break;
   case 0:
     echo "JACKPOT! YOU ARE THE WINNER!!! <br>";
-    echo "Here, have some cake! <br> <img src='cake.jpg' alt='CAKE!!!' width='200px' height='200px'>";
+    echo "Here, have some cake! <br> <img src='images/cake.jpg' alt='CAKE!!!' width='200px' height='200px'>";
     break;
 }
 
@@ -111,8 +111,8 @@ if(userChoice.length != 6) {
 
 if(userChoice.length == 30) {
   userAlert.innerHTML = 'You cheeky rascal :D'
-  parrotBox.innerHTML = '<img src=partyParrot.gif alt=partyParrot>'
-  expBox.innerHTML = '<img src=expParrot.gif alt=EXPOLOSION>'
+  parrotBox.innerHTML = '<img src=images/partyParrot.gif alt=partyParrot>'
+  expBox.innerHTML = '<img src=images/expParrot.gif alt=EXPOLOSION>'
 }
 
 </script>
