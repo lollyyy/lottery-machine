@@ -1,59 +1,56 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="style.css">
+  <link href="https://fonts.googleapis.com/css?family=Lato:700|Roboto|Righteous" rel="stylesheet">
   <title>Da lottery machine</title>
 </head>
 <body>
-
 <?php
-
-//Creating an array to store numbers 1-30
+//Create an array to store numbers 1-30
 $num_pool = range(1,30);
-
 ?>
-<fieldset>
-  <legend>Pick six lucky numbers!</legend>
+<h1>Divi Lottery 2019</h1>
+<div class="form-container">
+  <legend>Pick <em>6</em> lucky numbers!</legend>
   <form action="lopputehtava-1.php" method="post">
     <?php
-    //Looping through each value in the number pool, creating form inputs for each
+    //Loop through each value in the number pool, creating form inputs for each
     foreach($num_pool as $choice) {
-    echo "<input type='checkbox' name='usr_choice[]' value='$choice' class='selection'><label> $choice </label>";
+    echo "<input type='checkbox' name='usr_choice[]' value='$choice' id='selection$choice'><label for='selection$choice'>$choice</label>";
     //Linebreak after every tenth item to keep things tidy
-    $i++;
-    if($i % 10 == 0){
+    if($choice % 10 == 0){
       echo "<br>";
       }
     }
     ?>
     <br>
     <input type="submit" name="submit" value="Submit">
+
   </form>
-</fieldset>
+</div>
+<div id="parrotBox"></div>
+<div id="expBox"></div>
 <?php
 
-//Storing the values get from the form
+//Store the values get from the form
 $usr_choice = $_POST['usr_choice'];
 
-//Validating the input so the user can't pick less or more than six values
-if(sizeof($usr_choice) != 6){
-  echo "Hey man, pick six numbers!";
-}
-
 //Pick six random values from the number pool and store them to new variable
-$raffle = array_rand($num_pool, 6);
+$raffle = array_rand(array_flip($num_pool), 6);
 
-//Count the difference between the two arrays and store the lenght to new variable
-//Stfu operator to silence the warning that comes up on the first page load
-@$diff = array_diff($usr_choice, $raffle);
+if ($_POST['usr_choice'] != "" && sizeof($usr_choice) == 6) {
+
+//Count the difference between the two arrays and store the length to new variable
+$diff = array_diff($usr_choice, $raffle);
 
 //Count the difference of new array
 $diff_length = sizeof($diff);
 
-if ($_POST['usr_choice'] != "") {
+
 //Switch through the diff_length array and give user different messages
+echo "<p class='result'><em>";
 switch($diff_length) {
   case 6:
     echo "You got 0 right :(";
@@ -74,13 +71,50 @@ switch($diff_length) {
     echo "You got 5 right, DON'T LOSE HOPE!";
     break;
   case 0:
-    echo "JACKPOT! YOU ARE THE WINNER!!!";
+    echo "JACKPOT! YOU ARE THE WINNER!!! <br>";
+    echo "Here, have some cake! <br> <img src='cake.jpg' alt='CAKE!!!' width='200px' height='200px'>";
     break;
 }
-} else {
-  echo "Pick your number";
+
+echo "</em><br>";
+//Display choices and raffle numbers
+echo "Your Numbers: ";
+foreach($usr_choice as $usr_display) {
+  echo "$usr_display ";
 }
+echo "<br> Correct Numbers: ";
+foreach($raffle as $raffle_display) {
+  echo "$raffle_display ";
+}
+echo "</p>";
+
+} else {
+  echo "<p id='alert'>Good luck!</p>";
+}
+
+
+//For JavaScript wizardy
+$usr_choice_json = json_encode($usr_choice);
 ?>
 
+
+<script>
+
+const userChoice = JSON.parse('<?= $usr_choice_json; ?>')
+const userAlert = document.getElementById('alert')
+const parrotBox = document.getElementById('parrotBox')
+const expBox = document.getElementById('expBox')
+
+if(userChoice.length != 6) {
+  userAlert.innerHTML = 'Please choose <em>six</em> numbers'
+}
+
+if(userChoice.length == 30) {
+  userAlert.innerHTML = 'You cheeky rascal :D'
+  parrotBox.innerHTML = '<img src=partyParrot.gif alt=partyParrot>'
+  expBox.innerHTML = '<img src=expParrot.gif alt=EXPOLOSION>'
+}
+
+</script>
 </body>
 </html>
