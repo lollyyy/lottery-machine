@@ -1,7 +1,7 @@
 /* Stylesheet for lopputehtava-1 */
 body {
   text-align: center;
-  height: auto;
+  height: 100vh;
   width: 100%;
   background-color: #FFA500;
   color: white;
@@ -12,16 +12,22 @@ body {
 }
 
 h1 {
-  font-family: 'Righteous', cursive;
+  font-family: 'Righteous', sans-serif;
   color: #000;
-  font-size: 0.8em;
+  font-size: 0.65em;
   margin-bottom: 0;
+  height: 8%;
 }
 
 legend {
   margin: 0 auto;
   font-family: 'Lato', sans-serif;
   font-size: 1.2em;
+  height: 14%;
+}
+
+form {
+  height: 45%;
 }
 
 label {
@@ -100,7 +106,6 @@ a img {
   font-size: 0.5em;
   margin: 0;
   position: relative;
-  top: -2em;
   z-index: 99;
 }
 
@@ -118,4 +123,60 @@ a img {
 
 #alert {
   font-size: 0.7em;
+  height: 4%;
+}
+
+@media (max-width: 860px) {
+  body {
+    font-size: 8vh;
+  }
+
+  legend {
+    font-size: 0.9em;
+  }
+
+  input[type="checkbox"] + label {
+    transition: transform, 0.15s;
+  }
+
+  input[type="submit"] {
+    position: inherit;
+  }
+}
+
+@media (max-width: 666px) {
+  body {
+    font-size: 7vh;
+  }
+
+  input[type="checkbox"] + label {
+    padding: 0.3em;
+    font-size: 0.5em;
+    width: 5%;
+  }
+
+  .form-container {
+    width: 95%;
+  }
+
+  .result {
+    font-size: 0.7em;
+  }
+}
+
+
+@media (max-width: 524px) {
+  body {
+    font-size: 5vh;
+  }
+
+
+  input[type="submit"] {
+    font-size: 0.45em;
+  }
+
+  .result {
+    bottom: 10%;
+  }
+
 }
